@@ -6,27 +6,20 @@
 <body>
 
 	<div id="app">
-		
-		<input id="nome">
 
+		<div class="box"></div>
+		
 	</div>
 
-	<script type="text/javascript">
+	<script>
 		
-		var linkElement = document.createElement('a');
-		linkElement.setAttribute('href', 'http://www.google.com');
-		linkElement.setAttribute('title', 'Java Script');
+		var boxElement = document.querySelector('.box');
+
+		boxElement.style.width = 100;
+		boxElement.style.height = 100;
+		boxElement.style.backgroundColor = 'red';
 
 
-		var textElement = document.createTextNode('Acessar site da Google');
-		
-		linkElement.appendChild(textElement);
-
-		var containerElement = document.querySelector('#app');
-		containerElement.appendChild(linkElement);
-
-		var nome = document.querySelector('#nome');
-		containerElement.removeChild(nome);
 
 	</script>
 
