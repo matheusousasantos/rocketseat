@@ -7,16 +7,26 @@
 
 	<div id="app">
 		
-		<input onkeypress="mostrarAlerta();" >
-		<button onmouseover="mostrarAlerta();">Me pressione</button>
+		<input id="nome">
 
 	</div>
 
 	<script type="text/javascript">
 		
-		function mostrarAlerta() {
-			alert('Olá, Mundo!');
-		}
+		var linkElement = document.createElement('a');
+		linkElement.setAttribute('href', 'http://www.google.com');
+		linkElement.setAttribute('title', 'Java Script');
+
+
+		var textElement = document.createTextNode('Acessar site da Google');
+		
+		linkElement.appendChild(textElement);
+
+		var containerElement = document.querySelector('#app');
+		containerElement.appendChild(linkElement);
+
+		var nome = document.querySelector('#nome');
+		containerElement.removeChild(nome);
 
 	</script>
 
