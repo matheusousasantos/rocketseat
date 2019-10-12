@@ -1,8 +1,8 @@
-const arr = [1,3,4,5,6];
+function soma(a = 1, b = 2) {
+return a + b;
+}
 
-const newArr = arr.map(item => item * 2);
-console.log(newArr);
+console.log(soma(4));
 
-const teste = () => ( { nome : 'Matheus' } );
-
-console.log(teste());
+const somaAF = (a = 3, b = 6 ) => a + b;
+console.log(somaAF());

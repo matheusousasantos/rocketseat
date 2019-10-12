@@ -1,15 +1,17 @@
 "use strict";
 
-var arr = [1, 3, 4, 5, 6];
-var newArr = arr.map(function (item) {
-  return item * 2;
-});
-console.log(newArr);
+function soma() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  return a + b;
+}
 
-var teste = function teste() {
-  return {
-    nome: 'Matheus'
-  };
+console.log(soma(4));
+
+var somaAF = function somaAF() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  return a + b;
 };
 
-console.log(teste());
+console.log(somaAF());
