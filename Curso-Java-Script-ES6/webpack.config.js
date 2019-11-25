@@ -1,7 +1,7 @@
 module.exports = {
-	entry: './src/main.js', //Mova pasta raiz
+	entry: ['@babel/polyfill','./src/main.js'], 
 	output: {
-		path: __dirname + '/public', //Vai jogar o bundle para o public
+		path: __dirname + '/public',
 		filename: 'bundle.js',
 	},
 
