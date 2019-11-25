@@ -1,8 +1,12 @@
 module.exports = {
-	entry: './main.js',
+	entry: './src/main.js', //Mova pasta raiz
 	output: {
-		path: __dirname,
+		path: __dirname + '/public', //Vai jogar o bundle para o public
 		filename: 'bundle.js',
+	},
+
+	devServer: {
+		contentBase: __dirname + '/public'
 	},
 
 	module: {
