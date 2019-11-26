@@ -14,3 +14,5 @@ class Api {
 }
 
 Api.getUserInfo('matheusousasantos');
+
+
