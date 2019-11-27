@@ -5,11 +5,9 @@ class App {
     constructor() {
 
         this.repositories = [];
+
         this.formEl = document.getElementById('repo-form');
-
-//      Buscar esse input
         this.inputEl = document.querySelector('input[name=repository]');
-
         this.listEl = document.getElementById('repo-list');
 
         this.registerHandlers();
@@ -20,37 +18,58 @@ class App {
         this.formEl.onsubmit = event => this.addRepository(event);
     }
 
+    setLoading(loading = true) {
+
+        if(loading === true){
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild(document.createTextNode('Carregando'));
+            loadingEl.setAttribute('id', 'loading');
+
+            this.formEl.appendChild(loadingEl);
+
+        } else {
+            document.getElementById('loading').remove();
+        }
+
+    }
+
     async addRepository(event) {
         event.preventDefault();
 
-//      Vou pegar o valor do input
         const repoInput = this.inputEl.value;
 
-        if(repoInput.length === 0) {
+        if(repoInput.length === 0)
             return;
+
+        this.setLoading();
+
+        try {
+
+            const response = await api.get(`/users/${repoInput}`);
+
+            const { name, bio, html_url, avatar_url } = response.data;
+
+            console.log(response);
+
+            this.repositories.push({
+
+                name,
+                bio,
+                avatar_url,
+                html_url
+
+            });
+
+            this.inputEl.value = '';
+
+            this.render();
+
+        }catch( err ) {
+            alert('O repositório não existe!!')
         }
 
-//      Variável que irá conter todos as informações sobre um usuário no github
-        const response = await api.get(`/users/${repoInput}`);
+        this.setLoading(false);
 
-//      iremos usar a desestruturação para recuperar os dados corretos
-//      Eu preciso recuperar esses dados do response.data
-        const { name, bio, html_url, avatar_url } = response.data;
-
-        console.log(response);
-
-        this.repositories.push({
-
-            name, //A mesma coisa de name: 'name'
-            bio,
-            avatar_url,
-            html_url
-
-        });
-
-        this.inputEl.value = '';
-
-        this.render();
     }
 
     render(){
