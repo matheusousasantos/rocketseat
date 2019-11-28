@@ -10,16 +10,39 @@ module.exports = {
 
     },
 
+    async show(req, res){
+
+//      Busca de usuário por 'ID'
+//      Posso usar novamente o 'req'
+        const product = await Product.findById(req.params.id);
+        return res.json(product);
+    },
+
     async store(req, res) {
 
-//      Cria um novo com os dados dentro do 'req'
         const product = await Product.create(req.body);
-
-//      req.body:
-//      O corpo da requisição - contém todos os dados
-
         return res.json(product);
+    },
+
+    async update(req, res) {
+
+//      findByIdAndUpdate:
+//      Vou encontrar um produto e atualizar
+        const product = await Product.
+        findByIdAndUpdate(req.params.id, req.body, { new: true });
+//      Vai pegar(req.params.id) e atualizar(req.body)
+//      Como ser tiverssemos  unindo o 'show' e o 'store' 
+
+//      { new: true } - Moogose retorne o objeto atualizando para a variável product
+        
+        return res.json(product);
+
+    },
+
+    async destroy(req, res) {
+        await Product.findByIdAndRemove(req.params.id);
+
+//      Retorna uma reposta de sucesso sem nenhum conteúdo
+        return res.send();
     }
-
-
 }
