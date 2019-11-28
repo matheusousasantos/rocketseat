@@ -1,24 +1,25 @@
-//Importar o mongoose
 const mongoose = require('mongoose');
-
-//Importar o model
 const Product = mongoose.model('Product');
 
-//Exportando um objeto com algumas funções
 module.exports = {
-/* Faz uma listagem de todos os registros
- de produtos dentro da nossa base de dados */
- async index(req, res) {
 
-//   Busca todos os registros do banco de dados
-     const products = await Product.find();
-     
-//   Falo: Quero retornar em uma estrutura JSON   
-     return res.json(products);
+    async index(req, res) {
 
-//   Obs: O JSON é muito parecedo com um objeto
-//   dentro do java script
- }
+        const products = await Product.find();
+        return res.json(products);
+
+    },
+
+    async store(req, res) {
+
+//      Cria um novo com os dados dentro do 'req'
+        const product = await Product.create(req.body);
+
+//      req.body:
+//      O corpo da requisição - contém todos os dados
+
+        return res.json(product);
+    }
 
 
 }
