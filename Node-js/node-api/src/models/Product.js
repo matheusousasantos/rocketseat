@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate')
 
 const ProductSchema = new mongoose.Schema({
-//  Quais os campos que eu quero salvar no banco de dados
     
-    title:{            //Atributo
-        type: String,    //Tipo
-        required: true,  //Obrigatório
+    title:{ 
+        type: String,  
+        required: true, 
     },
 
     description: {
@@ -18,7 +18,6 @@ const ProductSchema = new mongoose.Schema({
         required: true,
     },
 
-//  Irá salvar uma data quando o registro for salvo no banco de dados.
     createdAt: {
         type: Date, 
         default: Date.now,
@@ -26,5 +25,7 @@ const ProductSchema = new mongoose.Schema({
 
 });
 
-//Registra um model na nossa aplicação
+//Adiciona a paginação
+ProductSchema.plugin(mongoosePaginate);
+
 mongoose.model('Product', ProductSchema);
