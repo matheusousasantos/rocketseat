@@ -4,18 +4,8 @@ const Product = mongoose.model('Product');
 module.exports = {
 
     async index(req, res) {
-
-//      Estou pegando o parâmetro 'page' dentro do 'get'
-//      Posso definir um valor padão pra ele 'page = 1'      
+ 
         const { page = 1 } = req.query;
-
-
-//      {} - Se precisarssemos de uma condição
-
-//      { page: 1, limit: 10 }
-//      page: 1 - Página atual
-//      page: 10 - Limite de dados por página
-
         const products = await Product.paginate({}, { page, limit: 10 });
         return res.json(products);
 

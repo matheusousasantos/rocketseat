@@ -25,7 +25,6 @@ const ProductSchema = new mongoose.Schema({
 
 });
 
-//Adiciona a paginação
 ProductSchema.plugin(mongoosePaginate);
 
 mongoose.model('Product', ProductSchema);
