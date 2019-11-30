@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello rocketseat</h1>
-      </div>
-    );
-  }
-}
+import './style.css'
+
+//Importando o Componente Header
+import Header from './components/Header'
+
+//Transformar ele em uma 'Stateless Component'
+const App = () => (
+   <div className="App">
+     <Header />
+   </div>
+);
 
 export default App;
