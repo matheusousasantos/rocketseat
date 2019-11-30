@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
-import './style.css'
+import './style.css';
 
-//Importando o Componente Header
-import Header from './components/Header'
+import Header from './components/Header';
+import Main from './pages/main';
 
-//Transformar ele em uma 'Stateless Component'
+
 const App = () => (
    <div className="App">
      <Header />
+     <Main />
    </div>
 );
 
