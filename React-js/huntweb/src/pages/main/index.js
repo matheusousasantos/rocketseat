@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 import api from '../../services/api';
 
+import './style.css';
+
 export default class Main extends Component {
-//  O estado é sempre um objeto
+
     state = {
-//      Aqui podemos armazenar as variáveis que
-//      quizermos
-
         products: [] 
-
     }
 
     componentDidMount() {
@@ -19,8 +17,6 @@ export default class Main extends Component {
     loadProducts = async () => {
         const response = await api.get(`/products`);
         
-//      Armazeando os produtos
-//      Será as informações que eu quero atualizar
         this.setState({ 
             products: response.data.docs 
         });
@@ -28,14 +24,23 @@ export default class Main extends Component {
     }
 
     render() {
+//      Vai buscar a variável products dentro de state
+        const { products } = this.state;
 
         return (
-
-//          Mostrando o produto em tela
+            
             <div className="product-list">
 
-                { this.state.products.map(product => (
-                    <h2 key={product._id}>{ product.title }</h2>
+                { products.map(product => (
+
+                    <article key={ product._id }>
+
+                        <strong>{product.title}</strong>                        <strong>{product.title}</strong>
+                        <p>{product.description}</p>
+                        <a href="#">Acessar</a>
+
+                    </article>
+
                 ))}
             </div>
         );
