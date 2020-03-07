@@ -23,6 +23,9 @@ export default class Main extends Component {
         const response = await api.get(`/products?page=${page}`);
 
         const { docs, ... productInfo } = response.data;
+
+        console.log(productInfo);
+        console.log(response.data);
         
         this.setState({ 
             products: docs, productInfo, page
@@ -60,7 +63,8 @@ export default class Main extends Component {
 
                     <article key={ product._id }>
 
-                        <strong>{product.title}</strong>                        <strong>{product.title}</strong>
+                        <strong>{product.title}</strong>
+                        <strong>{product.title}</strong>
                         <p>{product.description}</p>
                         <Link to={`/products/${product._id}`}>Acessar</Link>
 
