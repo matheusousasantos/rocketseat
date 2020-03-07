@@ -1,12 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={ styles.text }>Meu Primeiro app React Native</Text>
-    </View>
-  );
+export default class App extends Component {
+
+  render() {
+
+    return(
+      <View style={styles.container}>
+        <Text style={ styles.text }>Meu Primeiro app React Native</Text>
+
+        <View style={styles.box} />
+
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -16,4 +23,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  box: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#F00'
+  }
 });
